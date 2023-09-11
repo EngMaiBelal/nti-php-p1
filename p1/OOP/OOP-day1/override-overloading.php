@@ -14,7 +14,7 @@ class phone{
 class samsung extends phone{
     public function takePhotos(){ //override
     // public function takePhotos($name){ //overloading array_intersect //dynamic parameter
-        echo "can take photos from samsung ";
+        echo "can take photos from samsung";
     }
 }
 $objSamsung = new samsung;
