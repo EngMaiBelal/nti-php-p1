@@ -1,0 +1,61 @@
+sql:-
+structure query langauage
+-create db, columns, relation , permission, delete, 
+
+DBMS:-
+	database managment system 
+	store data as afile
+
+RDBMS:-
+	relational database management system tables, relation 
+	mysql, oracle, sqlserver, sqlite
+
+--------------------------------------------------------------
+Queries
+---------------
+DDL:-
+CREATE DATATBASE `database-name`
+CREATE DATATBASE IF NOT EXISTS `database-name`
+DROP DATATBASE `database-name`
+DROP DATATBASE IF EXISTS `database-name`
+
+
+CREATE TABLE `name-table`(
+    `name-column` datatype(length) constrain(unique, primary key , forign key, default Auto_increment, ....) NULL || NOT NULL ,    
+    )
+CREATE TABLE `products`(
+    `id` BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,    
+    `name_ar` VARCHAR(1000) NOT NULL,
+    `name_en` VARCHAR(1000) NOT NULL,
+    `price` DECIMAL(8,2) NOT NULL,
+    `details_ar` TEXT NOT NULL,
+    `details_en` TEXT NOT NULL,
+    `quantity` INT(5) DEFAULT 1,
+    `photo` VARCHAR(255) DEFAULT 'default.png',
+    `status` TINYINT(1) DEFAULT 1 COMMENT "1-> active, 0-> not active",
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    );
+
+DROP TABLE `table-name`
+ALTER TABLE `table-name` ADD `column-name` datatype constraints
+ALTER TABLE `table-name` DROP`column-name` datatype constraints
+ALTER TABLE `table-name` CHANGE `old-column-name` `new-column-name` datatype constraints
+ALTER TABLE `table-name` ADD CONSTRAINT `relation-name` FOREIGN KEY (`FId`) REFERENCES OTHERTABLE(`Id`)    
+ON DELETE CASCADE ON UPDATE NO ACTION;
+
+INSERT INTO `categories` VALUES('موبايلات','mobile', DEFAULT, DEFAULT,'2023-09-01','2023-09-01');
+
+INSERT INTO `categories`(`name_ar`,`name_en`,`photo`,`status`,`created_at`,`updated_at`) VALUES ( 'موبايلات', 'mobile', 'n.png','1', '2023-09-13','2023-09-13'),(),();
+
+update, delete
+
+- on delete لو مسحت في الجدول الرئيسي الجدول الفرعي هيحصل فيه ايه
+- on update لو عدلت في الجدول الرئيسي الجدول الفرعي هيحصل فيه ايه
+
+- cascade لو عدلت في الرئيسي عدل في الفرعي|| المسح
+- setnull لو عدلت في الرئيس حط في الفرعي null || المسح
+
+- noaction, restrict امنع انه يمسح في الجول الفرعي او يعدل 
+
+parent table (categories id) , child table (subcategories fk)

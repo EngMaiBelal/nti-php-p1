@@ -1,0 +1,59 @@
+why we use database?
+// session, cookies, file system --> json, db
+// users=[....]
+database requirments:-
+	1- ERD (entity relational design)(entity, attributes, relation(one to one, one to many , many to one, many to many))
+	2- RS  (relational schema) 	 (tables, colums, relation)
+	3- create db 
+
+*Entity 
+	week entity labs
+	strong entity students
+*Attributes
+	unique email
+	comosite unique code-phone 012  58925688 \ 012  58925689 \015 58925688
+*Relations (one to one, one to many, many to many)
+	direct
+	indirect
+	no relation
+
+
+
+
+
+
+1 2
+1 3
+1 1
+
+2 2
+2 3
+2 1
+
+compare between primary key id , unique email,phone
+ecommerece application
+
+
+
+--------------------------------------------------------------
+electronics-ecommerce
+--------------------
+categories    (id, name_en,name_ar, photo,created_at, updated_at,status) // mobils, labtops,...
+subcategories (id, name_en,name_ar, photo, created_at, updated_at, status)
+brands        ( id, name_en, name_ar, status)
+products      (id, name_en, name_ar, price, status, details_en, details_ar)
+users         (id, name , email, phone, password, photo, created_at, update_at,
+	      code, email_verified_at, code_verified_at , remember_token)
+addresses     (id, street, buliding, floor, flat, notes, created_at, updated_at)
+cities 	 (id, name_en, name_ar, created_at, updated_at, status)
+regions(id, name_en, name_ar,latitude, longitude, created_at, updated_at, status)
+orders(id, code, total, status(....), delivered_date, created_at, updated_at)
+offers (id, start_date_time, end_date_time, title_ar, title_en, photo, status) 
+coupons (id, code, value (20% 20egp), type, start_date_time, end_date_time,
+	mini_value(orders), max_disount_value, max_usage_number 1000user, 
+	user_max_usage peruser)
+cart(quantity)
+reviews(comment, value)
+wishlists
+
+
