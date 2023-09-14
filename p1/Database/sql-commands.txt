@@ -9,47 +9,8 @@ DBMS:-
 RDBMS:-
 	relational database management system tables, relation 
 	mysql, oracle, sqlserver, sqlite
-
---------------------------------------------------------------
-Queries
----------------
-DDL:-
-CREATE DATATBASE `database-name`
-CREATE DATATBASE IF NOT EXISTS `database-name`
-DROP DATATBASE `database-name`
-DROP DATATBASE IF EXISTS `database-name`
-
-
-CREATE TABLE `name-table`(
-    `name-column` datatype(length) constrain(unique, primary key , forign key, default Auto_increment, ....) NULL || NOT NULL ,    
-    )
-CREATE TABLE `products`(
-    `id` BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,    
-    `name_ar` VARCHAR(1000) NOT NULL,
-    `name_en` VARCHAR(1000) NOT NULL,
-    `price` DECIMAL(8,2) NOT NULL,
-    `details_ar` TEXT NOT NULL,
-    `details_en` TEXT NOT NULL,
-    `quantity` INT(5) DEFAULT 1,
-    `photo` VARCHAR(255) DEFAULT 'default.png',
-    `status` TINYINT(1) DEFAULT 1 COMMENT "1-> active, 0-> not active",
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    );
-
-DROP TABLE `table-name`
-ALTER TABLE `table-name` ADD `column-name` datatype constraints
-ALTER TABLE `table-name` DROP`column-name` datatype constraints
-ALTER TABLE `table-name` CHANGE `old-column-name` `new-column-name` datatype constraints
-ALTER TABLE `table-name` ADD CONSTRAINT `relation-name` FOREIGN KEY (`FId`) REFERENCES OTHERTABLE(`Id`)    
-ON DELETE CASCADE ON UPDATE NO ACTION;
-
-INSERT INTO `categories` VALUES('موبايلات','mobile', DEFAULT, DEFAULT,'2023-09-01','2023-09-01');
-
-INSERT INTO `categories`(`name_ar`,`name_en`,`photo`,`status`,`created_at`,`updated_at`) VALUES ( 'موبايلات', 'mobile', 'n.png','1', '2023-09-13','2023-09-13'),(),();
-
-update, delete
-
+-------------------------------------------------------------------------------------------------
+Notes:-
 - on delete لو مسحت في الجدول الرئيسي الجدول الفرعي هيحصل فيه ايه
 - on update لو عدلت في الجدول الرئيسي الجدول الفرعي هيحصل فيه ايه
 
@@ -58,4 +19,59 @@ update, delete
 
 - noaction, restrict امنع انه يمسح في الجول الفرعي او يعدل 
 
-parent table (categories id) , child table (subcategories fk)
+- parent table (categories id) , child table (subcategories fk)
+
+--------------------------------------------------------------
+Queries
+---------------
+DDL:-
+1- CREATE DATATBASE `database-name`
+2- CREATE DATATBASE IF NOT EXISTS `database-name`
+3- DROP DATATBASE `database-name`
+4- DROP DATATBASE IF EXISTS `database-name`
+5- CREATE TABLE `name-table`(`name-column` datatype(length) constrain(unique, primary key , forign key, default Auto_increment, ....) NULL || NOT NULL ,  )
+	CREATE TABLE `products`(`id` BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,`name_ar` VARCHAR(1000) NOT NULL,`name_en` VARCHAR(1000) NOT NULL,`price` DECIMAL(8,2) NOT NULL,`details_ar` TEXT NOT NULL,`details_en` TEXT NOT NULL,`quantity` INT(5) DEFAULT 1,`photo` VARCHAR(255) DEFAULT 'default.png', `status` TINYINT(1) DEFAULT 1 COMMENT "1-> active, 0-> not active",`created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,`updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
+6- DROP TABLE `table-name` // strusture table
+7- ALTER TABLE `table-name` ADD `column-name` datatype constraints
+8- ALTER TABLE `table-name` DROP`column-name` datatype constraints
+9- ALTER TABLE `table-name` CHANGE `old-column-name` `new-column-name` datatype constraints
+10- ALTER TABLE `table-name` ADD CONSTRAINT `relation-name` FOREIGN KEY (`FId`) REFERENCES OTHERTABLE(`Id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+11- INSERT INTO `table-name` VALUES('column-value','column-value', DEFAULT, DEFAULT,'column-value','column-value');
+12- INSERT INTO `table-name`(`column-name`,`column-name`,...) VALUES ( 'column-value', 'column-value','column-value',...),(),();
+13- UPDATE `table-name` SET `perfix`.`column-name` = 'new-value' WHERE condition;
+14- DELETE FROM `table-name` WHERE condition; 
+	- DELETE FROM `table-name`// empty table low performance
+15- TRUNCATE TABLE `brands` 	  // empty table // high performance 
+	# real table, virtual table
+	# SELECT `brands`.* from `brands;
+16- SELECT `table-name`.`column-name`,`table-name`.`column-name`,.. from `table-name` where condition;
+16- SELECT `table-name`.* from `table-name`;
+17- operators(arth, logical, comparison)
+
+18- where  `table-name`.`column-name` BETWEEN min AND Max 
+
+19- where  `table-name`.`column-name` In (val1, val2,...)
+20- where  `table-name`.`column-name` IS NULL|| IS NOT NULL
+21- COUNT,MIN,MAX,AVG,SUM,GROUP_CONCATE => Aggregates functions
+22- GROUP_By `table-name`.`column-name`
+23- JOIN , having , limit, order by ,DISTINCT
+
+كل المنتجات اللي اطلبت بالاسم وعاوزه اعلي سعر منتج اطلب الشهر ده
+
+-------------------------------
+offest limit
+union
+view
+like
+GROUP_CONCATE
+-----------------------------
+subquery EXISTS, ANY, ALL
+select join --> join sub query
+aggregetes
+
+TCL DCL
+cross, self join
+CASE, IF
+index,  procedures(trigger, events), windows function
+--------------------------------------------------- 
+
