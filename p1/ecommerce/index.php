@@ -1,6 +1,7 @@
 <?php
 include_once "layouts/header.php";
 include_once "layouts/nav.php";
+// var_dump($_SESSION['user']);die;
 ?>
 
         <!-- Slider Start -->

@@ -29,15 +29,30 @@ include_once "layouts/nav.php";
                         <div id="lg1" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <form action="#" method="post">
+                              
+                                <form action="app/php/login.php" method="post">
                                         <input type="email" name="email" placeholder="email">
+                                        <?php 
+                                            if(isset( $_SESSION['validation']['email-validation'])){
+                                                foreach($_SESSION['validation']['email-validation']As $key=> $value){
+                                                    echo "<div class='alert alert-danger'>$value</div>";
+                                                }
+                                            }
+                                        ?>
                                         <input type="password" name="password" placeholder="Password">
+                                        <?php 
+                                            if(isset( $_SESSION['validation']['password-validation'])){
+                                                if(isset($_SESSION['validation']['password-validation']['password-required'])){
+                                                    echo "<div class='alert alert-danger'>".$_SESSION['validation']['password-validation']['password-required']."</div>";
+
+                                                }
+                                                if(isset($_SESSION['validation']['password-validation']['password-invalid'])){
+                                                    echo "<div class='alert alert-danger'>".$_SESSION['validation']['password-validation']['password-invalid']."</div>";
+
+                                                }
+                                            }
+                                        ?>
                                         <div class="button-box">
-                                            <div class="login-toggle-btn">
-                                                <input type="checkbox">
-                                                <label>Remember me</label>
-                                                <a href="#">Forgot Password?</a>
-                                            </div>
                                             <button type="submit" name="login"><span>Login</span></button>
                                         </div>
                                     </form>

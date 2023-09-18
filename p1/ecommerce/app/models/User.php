@@ -17,7 +17,30 @@ class User extends databaseConnection implements operation{
     private $updated_at;
     private $remember_token;
 
+    public function emailCheck(){
+        $query="SELECT `users`.* FROM `users` WHERE `users`.`email`='$this->email'"; //$this->getEmail()
+        return $this->runDQL($query);
+    }
     function create(){
+        $query= "INSERT INTO `users`
+        (`users`.`name`,`users`.`email`,
+         `users`.`password`, `users`.`phone`, `users`.`code`) VALUES 
+         ('$this->name', '$this->email', '$this->password', '$this->phone', '$this->code')";
+         return $this->runDML($query);
+
+    }
+    public function checkCodeByEmail(){
+        $query="SELECT `users`.* FROM `users` WHERE `users`.`email`='$this->email' AND `users`.`code`='$this->code'"; //$this->getEmail()
+        return $this->runDQL($query);
+        
+    }
+    public function emailVerification(){
+        $query="UPDATE `users` SET `users`.`email_verified_at`='".date('Y-m-d H:i:s')."'WHERE `users`.`email` = '$this->email'";
+        return $this->runDML($query);
+    }
+    public function login(){
+        $query="SELECT `users`.* FROM `users` WHERE `users`.`email`='$this->email' AND `users`.`password`='$this->password'"; //$this->getEmail()
+        return $this->runDQL($query);
 
     }
     function update(){
@@ -97,8 +120,7 @@ class User extends databaseConnection implements operation{
      */
     public function setPassword($password): self
     {
-        $this->password = $password;
-
+        $this->password = sha1($password);
         return $this;
     }
 

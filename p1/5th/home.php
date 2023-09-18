@@ -1,6 +1,5 @@
 <?php
 include_once "layouts/header.php";
-// include_once "middlewares/auth.php";
 include_once "layouts/nav.php";
 ?>
 

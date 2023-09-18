@@ -29,6 +29,16 @@ include_once "layouts/nav.php";
                         <div id="lg2" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
+                                    <?php
+                                    if(isset($_SESSION['validation']['failed-email'])){
+                                        echo "<div class='alert alert-danger'>".$_SESSION['validation']['failed-email']."</div>";
+
+                                    }
+                                    if(isset($_SESSION['validation']['something-wrong'])){
+                                        echo "<div class='alert alert-danger'>".$_SESSION['validation']['something-wrong']."</div>";
+
+                                    }
+                                    ?>
                                     <form action="app/php/register.php" method="post">
                                         <input type="text" name="name" placeholder="name">
                                         <input type="email" name="email" placeholder="email">

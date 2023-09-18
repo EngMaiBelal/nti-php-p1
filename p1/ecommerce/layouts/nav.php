@@ -113,14 +113,32 @@
                             </nav>
                         </div>
                         <div class="header-currency">
-                            <span class="digit">Welcome <i class="ti-angle-down"></i></span>
-                            <div class="dollar-submenu">
-                                <ul>
-                                    <li><a href="login.php">Login</a></li>
-                                    <li><a href="register.php">Register</a></li>
-                                
-                                </ul>
-                            </div>
+                        <li class="nav-item dropdown">
+                        <?php
+                        if (isset($_SESSION['user'])) { ?>  
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <?= $_SESSION['user']->name ?>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="app/php/logout.php"> logout</a>
+                            <a class="dropdown-item" href="profile.php"> profile </a>
+                        </div>
+                        <?php
+                        }else{ ?>
+
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Welcome
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="login.php">login</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="register.php">register</a>
+                        </div>
+                        <?php }
+                        ?> 
+                    </li>
                         </div>
                         <div class="header-cart">
                             <a href="#">

@@ -12,7 +12,7 @@ class databaseConnection{
             die("connection failed: ".$this->connection->connect_error);
             // echo '';die;
         }
-        echo "connection successfuly";
+        // echo "connection successfuly";
     }
 
     public function runDQL($query){ //SELECT

@@ -1,5 +1,5 @@
 <?php 
-
+include_once "../models/User.php";
 class RegisterRequest {
     private $password;
     private $confirm_password;
@@ -41,6 +41,15 @@ class RegisterRequest {
         return $errors;
     }
 
+    public function emailDataBaseCheck(){
+        $user = new User;
+        $user->setEmail($this->email);
+        if($user->emailCheck()){
+            return ['email-exists'=>'Email already exists'];
+        }else{
+            return [];
+        }
+    }
     /**
      * Get the value of email
      */
