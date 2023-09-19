@@ -122,7 +122,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="app/php/logout.php"> logout</a>
-                            <a class="dropdown-item" href="profile.php"> profile </a>
+                            <a class="dropdown-item" href="my-account.php"> profile </a>
                         </div>
                         <?php
                         }else{ ?>

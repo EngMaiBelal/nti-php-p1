@@ -1,8 +1,5 @@
 <?php
 include_once "layouts/header.php";
-// include_once "layouts/nav.php";
-// print_r($_SESSION['email']);die;
-
 ?>
 
 <!-- Breadcrumb Area End -->
@@ -13,23 +10,27 @@ include_once "layouts/header.php";
                 <div class="login-register-wrapper">
                     <div class="login-register-tab-list nav">
                         <a class="active" data-toggle="tab" href="#lg1">
-                            <h4> Check-code </h4>
+                            <h4> Check Email </h4>
                         </a>
                     </div>
                     <div class="tab-content">
                         <div id="lg1" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <?php
-                                        if(isset($_SESSION['validation']['failed-email-verified'])){
-                                            echo "<div class='alert alert-danger'>". $_SESSION['validation']['failed-email-verified']."</div>";
+                                    <form action="app/php/checkEmail.php" method="post">
+                                        <input type="email" name="email" placeholder="email">
+                                        <?php 
+                                            if(isset( $_SESSION['validation']['email-validation'])){
+                                                foreach($_SESSION['validation']['email-validation']As $key=> $value){
+                                                    echo "<div class='alert alert-danger'>$value</div>";
+                                                }
+                                            }
+                                            if(isset( $_SESSION['validation']['email-not-exists'])){
+                                                echo "<div class='alert alert-danger'>".$_SESSION['validation']['email-not-exists']."</div>";
 
-                                        }
-                                    ?>
-                                    <form action="app/php/checkCode.php" method="post">
-                                        <input type="code" name="code" placeholder="code">
-                                            <button type="submit" name="check-code"><span>check code</span></button>
-                                        </div>
+                                            }
+                                        ?>
+                                        <button type="submit" name="check-email"><span>check email</span></button>
                                     </form>
                                 </div>
                             </div>
@@ -40,7 +41,6 @@ include_once "layouts/header.php";
         </div>
     </div>
 </div>
-<
 <?php
-// include_once "layouts/footer.php";
+unset($_SESSION['validation']);
 ?>

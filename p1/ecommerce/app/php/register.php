@@ -26,7 +26,6 @@ if(isset($_POST['register'])){
             header('location:../../register.php');
         }
     }
-
     if($passwordValidation){
         $_SESSION['validation']['password-validation']= $passwordValidation;
         header('location:../../register.php');
@@ -52,8 +51,8 @@ if(isset($_POST['register'])){
             $result= $email->sendEmail($_POST['email'],'verfication code', $body);
             if($result){
                 $_SESSION['email']=$_POST['email'];
-                // print_r('ok');die;
-                header('location:../../check-code.php');
+                // $_SESSION['page']= 'register';
+                header("location:../../check-code.php?page=register");
             }else{
                 $_SESSION['validation']['failed-email']='please try again';
                 header('location:../../register.php');

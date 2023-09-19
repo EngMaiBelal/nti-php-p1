@@ -38,8 +38,8 @@ class sendMail {
             // echo 'Message has been sent';
             return TRUE;
         } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";die;
-            // return FALSE;
+            // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";die;
+            return FALSE;
         }
     }
 }

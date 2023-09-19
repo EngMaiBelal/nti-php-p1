@@ -1,16 +1,17 @@
 <?php
 include_once "layouts/header.php";
-include_once "app/middlewares/auth.php";
-include_once "layouts/nav.php";
+// print_r($_SESSION);die;
+
 ?>
+
 <!-- Breadcrumb Area Start -->
 <div class="breadcrumb-area bg-image-3 ptb-150">
     <div class="container">
         <div class="breadcrumb-content text-center">
-            <h3>Register</h3>
+            <h3>Set New Password</h3>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li class="active">Register</li>
+                <li class="active">Set New Password</li>
             </ul>
         </div>
     </div>
@@ -22,38 +23,15 @@ include_once "layouts/nav.php";
             <div class="col-lg-7 col-md-12 ml-auto mr-auto">
                 <div class="login-register-wrapper">
                     <div class="login-register-tab-list nav">
-                        <a class="active" data-toggle="tab" href="#lg2">
-                            <h4> register </h4>
+                        <a class="active" data-toggle="tab" href="#lg1">
+                            <h4> New Password </h4>
                         </a>
                     </div>
                     <div class="tab-content">
-                        <div id="lg2" class="tab-pane active">
+                        <div id="lg1" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <?php
-                                    if(isset($_SESSION['validation']['failed-email'])){
-                                        echo "<div class='alert alert-danger'>".$_SESSION['validation']['failed-email']."</div>";
-
-                                    }
-                                    if(isset($_SESSION['validation']['something-wrong'])){
-                                        echo "<div class='alert alert-danger'>".$_SESSION['validation']['something-wrong']."</div>";
-
-                                    }
-                                    ?>
-                                    <form action="app/php/register.php" method="post">
-                                        <input type="text" name="name" placeholder="name">
-                                        <input type="email" name="email" placeholder="email">
-                                        <?php 
-                                            if(isset( $_SESSION['validation']['email-validation'])){
-                                                foreach($_SESSION['validation']['email-validation']As $key=> $value){
-                                                    echo "<div class='alert alert-danger'>$value</div>";
-                                                }
-                                            }
-                                            // if(isset( $_SESSION['validation']['email-exists'])){
-                                            //     echo "<div class='alert alert-danger'>".$_SESSION['validation']['email-exists']."</div>";
-
-                                            // }
-                                        ?>
+                                    <form action="app/php/setPassword.php" method="post">
                                         <input type="password" name="password" placeholder="Password">
                                         <?php 
                                             if(isset( $_SESSION['validation']['password-validation'])){
@@ -67,7 +45,7 @@ include_once "layouts/nav.php";
                                                 }
                                             }
                                         ?>
-                                        <input type="password" name="confirm-password" placeholder="confirm-password">
+                                        <input type="password" name="confirm-password" placeholder="Confrim Password">
                                         <?php 
                                             if(isset( $_SESSION['validation']['password-validation'])){
                                                 if(isset($_SESSION['validation']['password-validation']['confirm-password-required'])){
@@ -80,21 +58,18 @@ include_once "layouts/nav.php";
                                                 }
                                             }
                                         ?>
-                                        <input name="phone" placeholder="phone" type="tel">
                                         <div class="button-box">
-                                            <button type="submit" name="register"><span>Register</span></button>
+                                            <button type="submit" name="set-password"><span>Change Password</span></button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<?php
-unset($_SESSION['validation']);
-include_once "layouts/footer.php";
-?>
+<?php include_once "layouts/footer.php"; ?>

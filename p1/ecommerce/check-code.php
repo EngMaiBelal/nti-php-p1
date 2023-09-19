@@ -2,7 +2,8 @@
 include_once "layouts/header.php";
 // include_once "layouts/nav.php";
 // print_r($_SESSION['email']);die;
-
+// print_r("app/php/checkCode.php?page=".$_GET['page']);die;
+// $_GET=['page'=>'check-email']
 ?>
 
 <!-- Breadcrumb Area End -->
@@ -23,10 +24,9 @@ include_once "layouts/header.php";
                                     <?php
                                         if(isset($_SESSION['validation']['failed-email-verified'])){
                                             echo "<div class='alert alert-danger'>". $_SESSION['validation']['failed-email-verified']."</div>";
-
                                         }
                                     ?>
-                                    <form action="app/php/checkCode.php" method="post">
+                                    <form action=<?php echo "app/php/checkCode.php?page=".$_GET['page']?> method="post">
                                         <input type="code" name="code" placeholder="code">
                                             <button type="submit" name="check-code"><span>check code</span></button>
                                         </div>

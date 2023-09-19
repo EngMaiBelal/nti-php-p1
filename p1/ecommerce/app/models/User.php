@@ -1,6 +1,7 @@
 <?php 
-include_once "../database/databaseConnection.php";
-include_once "../database/operation.php";
+// echo __DIR__."../database/databaseConnection.php";die;
+include_once __DIR__."\../database\databaseConnection.php";
+include_once __DIR__."\../database\operation.php";
 
 class User extends databaseConnection implements operation{
 
@@ -43,8 +44,21 @@ class User extends databaseConnection implements operation{
         return $this->runDQL($query);
 
     }
+    public function updateCodeByEmail(){
+        $query="UPDATE `users` SET `users`.`code`='$this->code' WHERE `users`.`email` = '$this->email'";
+        return $this->runDML($query);
+    }
+    public function updateUserPasswordByEmail(){
+        $query="UPDATE `users` SET `users`.`password`='$this->password' WHERE `users`.`email` = '$this->email'";
+        return $this->runDML($query);
+    }
+    public function getUserByEmail(){
+        $query="SELECT `users`.* FROM `users` WHERE `users`.`email`='$this->email' "; //$this->getEmail()
+        return $this->runDQL($query);
+    }
     function update(){
-
+        $query="UPDATE `users` SET `users`.`name`='$this->name', `users`.`phone`='$this->phone' WHERE `users`.`email` = '$this->email'";
+        return $this->runDML($query);
     }
     function delete(){
 

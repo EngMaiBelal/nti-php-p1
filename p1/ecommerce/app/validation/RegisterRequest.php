@@ -45,9 +45,9 @@ class RegisterRequest {
         $user = new User;
         $user->setEmail($this->email);
         if($user->emailCheck()){
-            return ['email-exists'=>'Email already exists'];
+            return ['email-exists'=>'Email already exists']; //email exist in db
         }else{
-            return [];
+            return []; // email not exist
         }
     }
     /**

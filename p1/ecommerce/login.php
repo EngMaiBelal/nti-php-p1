@@ -1,5 +1,6 @@
 <?php
 include_once "layouts/header.php";
+include_once "app/middlewares/auth.php";
 include_once "layouts/nav.php";
 ?>
 <!-- Breadcrumb Area Start -->
@@ -38,6 +39,10 @@ include_once "layouts/nav.php";
                                                     echo "<div class='alert alert-danger'>$value</div>";
                                                 }
                                             }
+                                            if(isset( $_SESSION['validation']['email-not-exists'])){
+                                                echo "<div class='alert alert-danger'>".$_SESSION['validation']['email-not-exists']."</div>";
+
+                                            }
                                         ?>
                                         <input type="password" name="password" placeholder="Password">
                                         <?php 
@@ -52,7 +57,13 @@ include_once "layouts/nav.php";
                                                 }
                                             }
                                         ?>
+                                     
                                         <div class="button-box">
+                                            <div class="login-toggle-btn">
+                                                <input type="checkbox">
+                                                <label>Remember me</label>
+                                                <a href="check-email.php">Forgot Password?</a>
+                                            </div>
                                             <button type="submit" name="login"><span>Login</span></button>
                                         </div>
                                     </form>
@@ -65,7 +76,9 @@ include_once "layouts/nav.php";
         </div>
     </div>
 </div>
-<
+
 <?php
+unset($_SESSION['validation']);
+
 include_once "layouts/footer.php";
 ?>
