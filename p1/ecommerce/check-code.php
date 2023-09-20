@@ -4,6 +4,8 @@ include_once "layouts/header.php";
 // print_r($_SESSION['email']);die;
 // print_r("app/php/checkCode.php?page=".$_GET['page']);die;
 // $_GET=['page'=>'check-email']
+// print_r($_GET);die;
+// echo "app/php/checkCode.php?page=".$_GET['page'];die;
 ?>
 
 <!-- Breadcrumb Area End -->
@@ -26,6 +28,7 @@ include_once "layouts/header.php";
                                             echo "<div class='alert alert-danger'>". $_SESSION['validation']['failed-email-verified']."</div>";
                                         }
                                     ?>
+                                    <!-- isset $_get -->
                                     <form action=<?php echo "app/php/checkCode.php?page=".$_GET['page']?> method="post">
                                         <input type="code" name="code" placeholder="code">
                                             <button type="submit" name="check-code"><span>check code</span></button>

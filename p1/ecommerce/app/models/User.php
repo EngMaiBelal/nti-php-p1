@@ -57,9 +57,21 @@ class User extends databaseConnection implements operation{
         return $this->runDQL($query);
     }
     function update(){
-        $query="UPDATE `users` SET `users`.`name`='$this->name', `users`.`phone`='$this->phone' WHERE `users`.`email` = '$this->email'";
+       if($this->photo){
+           $query="UPDATE `users` SET
+            `users`.`name`='$this->name',
+            `users`.`phone`='$this->phone',
+             `users`.`photo`='$this->photo'
+           WHERE `users`.`email` = '$this->email'";
+       }else{
+        $query="UPDATE `users` SET
+        `users`.`name`='$this->name',
+        `users`.`phone`='$this->phone'
+        WHERE `users`.`email` = '$this->email'";
+       }
         return $this->runDML($query);
     }
+
     function delete(){
 
     }

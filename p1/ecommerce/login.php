@@ -1,7 +1,8 @@
 <?php
 include_once "layouts/header.php";
-include_once "app/middlewares/auth.php";
+include_once "app/middlewares/guest.php";
 include_once "layouts/nav.php";
+
 ?>
 <!-- Breadcrumb Area Start -->
 <div class="breadcrumb-area bg-image-3 ptb-150">
