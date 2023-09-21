@@ -1,6 +1,6 @@
 <?php 
-include_once "../database/databaseConnection.php";
-include_once "../database/operation.php";
+include_once __DIR__."\../database\databaseConnection.php";
+include_once __DIR__."\../database\operation.php";
 class Product extends databaseConnection implements operation{
     private $id;
     private $name_ar;
@@ -23,10 +23,49 @@ class Product extends databaseConnection implements operation{
     function delete(){
 
     }
-    function read(){
-
+    public function read(){
+        $query ="SELECT `products`.* FROM `products` 
+        WHERE `products`.`status` = $this->status";
+        return $this->runDQL($query);
     }
 
+    public function readSingleProduct(){
+          //     $query ="SELECT
+    //     `products`.*,
+    //     `subcategories`.`name_en` AS `subcategory_name_en`,
+    //     `categories`.`name_en` AS `category_name_en`,
+    //     `brands`.`name_en` AS `brand_name_en`
+    // FROM
+    //     `products`
+    // Join `subcategories` ON `products`.`subcategory_id` = `subcategories`.`id`  
+    // Join `categories` ON `subcategories`.`category_id` = `categories`.`id`  
+    //  left join `brands` ON `products`.`brand_id` = `brands`.`id` 
+    //  WHERE `products`.`id`= $this->id";
+        $query = "SELECT `products_data`.* FROM `products_data` WHERE `id`= $this->id";
+        return $this->runDQL($query);
+    }
+
+    public function findProduct(){
+        $query ="SELECT `products`.* from `products` 
+        where `products`.`status` = $this->status 
+        AND `subcategory_id`= $this->subcategory_id";
+        return $this->runDQL($query);
+
+    }
+    public function reviews(){
+        $query = "SELECT
+        COUNT(`reviews`.`product_id`) AS `reviews_count`,
+
+        if(ROUND(AVG(`reviews`.`value`)) IS NUll,0, ROUND(AVG(`reviews`.`value`)) ) AS `reviews_avg`
+    FROM
+        `products`
+    LEFT JOIN `reviews` ON `reviews`.`product_id` = $this->id
+    WHERE  `products`.`id` =$this->id
+    GROUP BY
+        `products`.`id`";
+        return $this->runDQL($query);
+
+    }
     /**
      * Get the value of id
      */

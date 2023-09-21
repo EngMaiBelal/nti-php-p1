@@ -3,9 +3,9 @@ session_start();
 include_once "../models/User.php";
 
 // print_r($_GET);die;
+$pages=['register', 'login', 'check-email'];
 if($_GET){ //super global
     if(isset($_GET['page'])){ //key
-        $pages=['register', 'login', 'check-email'];
         if(in_array($_GET['page'], $pages)){ //value
             $page = $_GET['page'];
         }else{

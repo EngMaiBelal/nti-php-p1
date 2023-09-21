@@ -116,6 +116,9 @@ $userDataUpadated = $userobj->getUserByEmail();
 if ($userDataUpadated) {
     $user = $userDataUpadated->fetch_object();
     // print_r($user);die;
+    // send mail with code, 
+    // go to check code with query string 
+
 } else {
     $error['something-wrong'] = 'something wrong';
 }

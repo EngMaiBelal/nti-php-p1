@@ -3,7 +3,12 @@ include_once "layouts/header.php";
 include_once "layouts/nav.php";
 // var_dump($_SESSION['user']);die;
 ?>
+<!-- <div class='row'>
+    <div class="col-12">
 
+
+    </div>
+</div> -->
         <!-- Slider Start -->
         <div class="slider-area">
             <div class="slider-active owl-dot-style owl-carousel">
