@@ -5,9 +5,12 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class IndexController extends Controller
 {
     public function index(){
+        return view('my-dashboard');
+    }
+    public function welcome(){
         return view('welcome');
     }
 }
