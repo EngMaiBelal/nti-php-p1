@@ -1,0 +1,3 @@
+// All products , url my-dashboard/all-products, method=> get ,input={}, o/p ={datat=> products}
+// Create product , my-dashboard/create-product, get method , input{}, o/p{brands, subcategories}
+// store product , my-dashboard/store-product, post method , input{product}, o/p{message,status code}

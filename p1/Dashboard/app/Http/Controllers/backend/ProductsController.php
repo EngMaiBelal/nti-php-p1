@@ -33,7 +33,7 @@ class ProductsController extends Controller
         // dd($request->all());
         // $request->validate($rules);
         $data =$request->except('_token','index','return','photo');
-        $data = $this->uploadPhoto($request, $data);
+        $data = $this->uploadPhoto($request, $data, 'products\\');
         DB::table('products')->insert($data);
         return $this->redirectAcoordingRequest($request);   
     }
@@ -43,13 +43,13 @@ class ProductsController extends Controller
         $product = DB::table('products')->where('id','=',$id)->first(); //object
         return view('products.edit', compact('brands','subcategories', 'product'));
     }
-    public function update(UpdateProductRequest $request, $product_id){
+    public function update(UpdateProductRequest $request){
         //validation $id
         $data =$request->except('_token','index','return','photo','_method');
         if($request->has('photo')){
-            $data = $this->uploadPhoto($request, $data);
+            $data = $this->uploadPhoto($request, $data , 'products\\');
         }
-        DB::table('products')->where('id',$product_id)->update($data);
+        DB::table('products')->where('id',$request->id)->update($data);
         return $this->redirectAcoordingRequest($request); 
     }
     public function destroy($id){
