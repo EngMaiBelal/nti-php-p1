@@ -20,16 +20,16 @@ trait generalTrait{
             'data'=>(object)[]
         ],$statusCode);
     }
-    public function returnErrorMessage($error = [], $statusCode=400){
+    public function returnErrorMessage($error = [], $message="", $statusCode=400){
         return response()->json([
-            'message'=>"", 
+            'message'=>$message, 
             'error'=>(object)$error,
             'data'=>(object)[]
         ],$statusCode);
     }
-    public function returnData($data=[],$statusCode=200){
+    public function returnData($data=[],$message="",$statusCode=200){
         return response()->json([
-            'message'=>"", 
+            'message'=>$message, 
             'error'=>(object)[],
             'data'=>(object)$data
         ],$statusCode);
